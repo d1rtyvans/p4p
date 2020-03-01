@@ -11,6 +11,9 @@ gem 'redis'
 # Prob don't need this but let's keep it for now
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Abort requests that are taking too long
+gem 'rack-timeout'
+
 # Will likely need this in the future. Uncomment when you do
 # gem 'rack-cors'
 
