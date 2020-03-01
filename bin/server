@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+echo 'Making sure gems are installed...'
+bundle install
+
+echo 'Killing Redis and Puma processes if running...'
+pkill -f 'redis|puma'
+
+echo 'Staring dev servers using Procfile.dev...'
+foreman start -f Procfile.dev
