@@ -34,6 +34,14 @@ group :development do
 end
 
 group :development, :test do
-  gem 'factory_bot_rails'
   gem 'rspec-rails'
+
+  # Easily set up test data
+  gem 'factory_bot_rails'
+  gem 'faker'
+end
+
+group :test do
+  # Test associations, validations with 1 liners
+  gem 'shoulda-matchers'
 end

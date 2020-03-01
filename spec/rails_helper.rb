@@ -61,3 +61,18 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+# Configure shoulda matchers for 1 line tests asserting correct associations,
+# validations, etc.
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+# Allow use of FactoryBot methods like #create without having to
+# refer to FactoryBot module by name
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+end
