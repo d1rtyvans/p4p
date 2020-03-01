@@ -1,4 +1,5 @@
 # Used to startup servers in development environment. To run use:
 #   `bin/server`
-web:        bundle exec puma -C config/puma.rb -p 3000
-redis:      redis-server
+web:    bundle exec puma -C config/puma.rb -p 3000
+redis:  redis-server
+worker: bundle exec sidekiq -e development -C config/sidekiq.yml

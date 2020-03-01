@@ -8,3 +8,5 @@ pkill -f 'redis|puma'
 
 echo 'Staring dev servers using Procfile.dev...'
 foreman start -f Procfile.dev
+
+# TODO: Gracefully handle SIGINT
