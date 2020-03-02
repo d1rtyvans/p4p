@@ -10,17 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_01_213524) do
+ActiveRecord::Schema.define(version: 2020_03_01_233503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "resort_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["resort_id"], name: "index_favorites_on_resort_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "resorts", force: :cascade do |t|
     t.string "name", null: false
     t.string "uid", null: false
     t.decimal "lat", precision: 10, scale: 6, null: false
     t.decimal "lon", precision: 10, scale: 6, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["uid"], name: "index_resorts_on_uid", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

@@ -5,6 +5,8 @@ class CreateResorts < ActiveRecord::Migration[6.0]
       t.string :uid,  null: false
       t.decimal :lat, precision: 10, scale: 6, null: false
       t.decimal :lon, precision: 10, scale: 6, null: false
+
+      t.timestamps
     end
 
     add_index :resorts, :uid, unique: true

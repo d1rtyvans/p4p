@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Resort, :model do
+  context 'Associations' do
+    it { is_expected.to have_many(:users).through(:favorites) }
+  end
+
   context 'Validations' do
     describe 'presence' do
       it { is_expected.to validate_presence_of(:name) }

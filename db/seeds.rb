@@ -1,5 +1,4 @@
 puts 'Beginning seed of DB...'
-puts 'Seeding Resorts...'
 # Seed with a few resorts in diff areas
 SEED_RESORTS = [
   {
@@ -34,8 +33,8 @@ SEED_RESORTS = [
   }
 ]
 
-
 # Find existing ones, create new ones that aren't found
+puts 'Seeding Resorts...'
 uids             = SEED_RESORTS.map { |resort| resort[:uid] }
 existing_resorts = Resort.where(uid: uids).pluck(:uid)
 
@@ -47,5 +46,28 @@ end
 
 puts "\tCreating #{new_resorts.size} new resort(s) in DB..."
 Resort.create!(new_resorts)
+puts "\tDone."
 
+# Seed users
+SEED_USERS = [
+  {
+    email: 'hi@shred.gov',
+    resorts: %w[sierra kwood jhole],
+  }
+]
+
+puts 'Seeding Users...'
+puts "\tFinding or creating #{SEED_USERS.size} user(s)..."
+User.transaction do
+  SEED_USERS.each do |user_data|
+    puts "\t\tCreating user with email: #{user_data[:email]}..."
+    user    = User.find_or_create_by!(email: user_data[:email])
+    resorts = Resort.where(uid: user_data[:resorts])
+
+    puts "\t\tCreating favorites for #{resorts.size} resort(s)..."
+    user.update!(resorts: resorts)
+  end
+end
+
+puts "\tDone."
 puts 'Done.'
