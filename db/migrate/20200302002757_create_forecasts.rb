@@ -14,6 +14,6 @@ class CreateForecasts < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :forecasts, :date
+    add_index :forecasts, [:date, :resort_id, :type], unique: true
   end
 end

@@ -10,28 +10,24 @@ module Forecasts
 
     def do!
       with_error_handling do
-        forecasts = format_forecast_data(get_forecasts)
-        create_forecasts!(forecasts)
+        forecasts = format_data(get_forecasts)
+        upsert_forecasts!(forecasts)
       end
     end
 
     private
 
-    def create_forecasts!(forecasts)
+    def upsert_forecasts!(forecasts)
       # TODO: Error handling
-      # TODO: Make idempotent
-      DarkSkyForecast.transaction do
-        forecasts.each do |forecast_data|
-          DarkSkyForecast.create!(forecast_data)
-        end
-      end
+      DarkSkyForecast.upsert_all(forecasts,
+                                 unique_by: [:date, :resort_id, :type])
     end
 
     def get_forecasts
       client.forecast(@coords)
     end
 
-    def format_forecast_data(forecasts)
+    def format_data(forecasts)
       timestamp = Time.current
       forecasts.map do |forecast_data|
         {
@@ -39,7 +35,10 @@ module Forecasts
           resort_id:           @resort_id,
           last_update:         timestamp,
           last_update_attempt: timestamp,
-          status:              'synced',
+          status:              1, # TODO: Convert
+          type:                'DarkSkyForecast',
+          created_at:          timestamp,
+          updated_at:          timestamp,
           payload: {
             hi_temp:         forecast_data['temperatureHigh'],
             lo_temp:         forecast_data['temperatureLow'],

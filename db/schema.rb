@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_002757) do
     t.bigint "resort_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["date"], name: "index_forecasts_on_date"
+    t.index ["date", "resort_id", "type"], name: "index_forecasts_on_date_and_resort_id_and_type", unique: true
     t.index ["resort_id"], name: "index_forecasts_on_resort_id"
   end
 

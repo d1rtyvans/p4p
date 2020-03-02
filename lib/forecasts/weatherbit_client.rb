@@ -10,7 +10,7 @@ module Forecasts
 
     def forecast(coords)
       query_params = "?lat=#{coords[0]}&lon=#{coords[1]}&units=I&days=#{DAYS}&key=#{@api_key}"
-      response = get('/forecast/daily' + query_params)
+      response = get('forecast/daily' + query_params)
 
       # TODO: Handling for nil values
       response['data']
