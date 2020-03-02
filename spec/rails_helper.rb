@@ -62,6 +62,9 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
+# Additional configuration for gems not included in Rails
+# -------------------------------------------------------
+
 # Configure shoulda matchers for 1 line tests asserting correct associations,
 # validations, etc.
 Shoulda::Matchers.configure do |config|
@@ -75,4 +78,16 @@ end
 # refer to FactoryBot module by name
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+end
+
+# Record and replay outside requests to allow more seamless 'integration' tests
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/support/cassettes'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+
+  # Let's you set default VCR mode with VCR=all for re-recording episodes. :once is VCR default
+  #   `VCR=all be rspec spec/to/run`
+  record_mode = ENV['VCR'] ? ENV['VCR'].to_sym : :once
+  c.default_cassette_options = { :record => record_mode }
 end

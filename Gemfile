@@ -39,6 +39,10 @@ group :development, :test do
   # Easily set up test data
   gem 'factory_bot_rails'
   gem 'faker'
+
+  # Record and replay outside requests in tests
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :test do
