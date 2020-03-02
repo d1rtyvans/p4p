@@ -1,0 +1,2 @@
+class DarkSkyForecast < Forecast
+end

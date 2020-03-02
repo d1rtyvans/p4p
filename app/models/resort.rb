@@ -4,6 +4,7 @@ class Resort < ApplicationRecord
   validates :lat,  presence: true
   validates :lon,  presence: true
 
+  has_many :forecasts
   has_many :favorites
   has_many :users, through: :favorites
 end

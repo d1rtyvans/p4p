@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_01_233503) do
+ActiveRecord::Schema.define(version: 2020_03_02_002757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 2020_03_01_233503) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["resort_id"], name: "index_favorites_on_resort_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "forecasts", force: :cascade do |t|
+    t.string "type", null: false
+    t.date "date", null: false
+    t.jsonb "payload", default: "{}", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "last_update"
+    t.datetime "last_update_attempt"
+    t.bigint "resort_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["date"], name: "index_forecasts_on_date"
+    t.index ["resort_id"], name: "index_forecasts_on_resort_id"
   end
 
   create_table "resorts", force: :cascade do |t|
