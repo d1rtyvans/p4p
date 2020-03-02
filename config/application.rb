@@ -33,5 +33,8 @@ module P4p
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Eager load lib/ dir
+    config.eager_load_paths += ["#{config.root}/lib"]
   end
 end

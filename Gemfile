@@ -16,6 +16,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Abort requests that are taking too long
 gem 'rack-timeout'
 
+# Faster and more pleasant API than RestClient
+gem 'httparty'
+
 # Will likely need this in the future. Uncomment when you do
 # gem 'rack-cors'
 
@@ -35,6 +38,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 
   # Easily set up test data
   gem 'factory_bot_rails'

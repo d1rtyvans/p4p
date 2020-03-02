@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.darksky.net/forecast/<API_KEY>/38.8009,-120.0809?exclude=currently,minutely,hourly,flags
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 02 Mar 2020 05:28:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Authentication-Time:
+      - 607ms
+      X-Forecast-Api-Calls:
+      - '6'
+      Cache-Control:
+      - max-age=3600
+      Expires:
+      - Mon, 02 Mar 2020 06:28:43 +0000
+      X-Response-Time:
+      - 95.864ms
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"latitude":38.8009,"longitude":-120.0809,"timezone":"America/Los_Angeles","daily":{"summary":"Possible
+        light snow today.","icon":"snow","data":[{"time":1583049600,"summary":"Possible
+        light snow in the morning.","icon":"snow","sunriseTime":1583073180,"sunsetTime":1583114100,"moonPhase":0.23,"precipIntensity":0.0155,"precipIntensityMax":0.061,"precipIntensityMaxTime":1583075100,"precipProbability":0.56,"precipType":"snow","precipAccumulation":4.84,"temperatureHigh":23.49,"temperatureHighTime":1583104140,"temperatureLow":17.15,"temperatureLowTime":1583159100,"apparentTemperatureHigh":17.78,"apparentTemperatureHighTime":1583074800,"apparentTemperatureLow":3.61,"apparentTemperatureLowTime":1583159640,"dewPoint":17.47,"humidity":0.82,"pressure":1018.1,"windSpeed":9.51,"windGust":34.98,"windGustTime":1583136000,"windBearing":67,"cloudCover":0.75,"uvIndex":3,"uvIndexTime":1583095260,"visibility":5.05,"ozone":383.6,"temperatureMin":19.04,"temperatureMinTime":1583132400,"temperatureMax":26.33,"temperatureMaxTime":1583049600,"apparentTemperatureMin":5.25,"apparentTemperatureMinTime":1583136000,"apparentTemperatureMax":24.28,"apparentTemperatureMaxTime":1583060460},{"time":1583136000,"summary":"Clear
+        throughout the day.","icon":"clear-day","sunriseTime":1583159460,"sunsetTime":1583200560,"moonPhase":0.26,"precipIntensity":0.0004,"precipIntensityMax":0.0023,"precipIntensityMaxTime":1583137680,"precipProbability":0.06,"precipType":"snow","precipAccumulation":0.15,"temperatureHigh":37.03,"temperatureHighTime":1583189880,"temperatureLow":25.82,"temperatureLowTime":1583231520,"apparentTemperatureHigh":28.01,"apparentTemperatureHighTime":1583190000,"apparentTemperatureLow":16.62,"apparentTemperatureLowTime":1583208240,"dewPoint":11.28,"humidity":0.54,"pressure":1021.7,"windSpeed":14.01,"windGust":37.55,"windGustTime":1583171520,"windBearing":77,"cloudCover":0.14,"uvIndex":5,"uvIndexTime":1583180580,"visibility":10,"ozone":325.4,"temperatureMin":17.15,"temperatureMinTime":1583159100,"temperatureMax":37.03,"temperatureMaxTime":1583189880,"apparentTemperatureMin":3.61,"apparentTemperatureMinTime":1583159640,"apparentTemperatureMax":28.01,"apparentTemperatureMaxTime":1583190000},{"time":1583222400,"summary":"Clear
+        throughout the day.","icon":"clear-day","sunriseTime":1583245800,"sunsetTime":1583287020,"moonPhase":0.3,"precipIntensity":0.0001,"precipIntensityMax":0.0003,"precipIntensityMaxTime":1583268960,"precipProbability":0.05,"precipType":"snow","precipAccumulation":0.01,"temperatureHigh":49.84,"temperatureHighTime":1583275500,"temperatureLow":31.57,"temperatureLowTime":1583331540,"apparentTemperatureHigh":47.25,"apparentTemperatureHighTime":1583275920,"apparentTemperatureLow":28.1,"apparentTemperatureLowTime":1583331600,"dewPoint":22.89,"humidity":0.6,"pressure":1021,"windSpeed":6.52,"windGust":17.6,"windGustTime":1583222400,"windBearing":88,"cloudCover":0.01,"uvIndex":6,"uvIndexTime":1583266200,"visibility":10,"ozone":313.2,"temperatureMin":25.82,"temperatureMinTime":1583231520,"temperatureMax":49.84,"temperatureMaxTime":1583275500,"apparentTemperatureMin":17,"apparentTemperatureMinTime":1583225100,"apparentTemperatureMax":47.25,"apparentTemperatureMaxTime":1583275920},{"time":1583308800,"summary":"Clear
+        throughout the day.","icon":"clear-day","sunriseTime":1583332080,"sunsetTime":1583373480,"moonPhase":0.33,"precipIntensity":0.0001,"precipIntensityMax":0.0002,"precipIntensityMaxTime":1583360400,"precipProbability":0.03,"precipType":"rain","temperatureHigh":53.84,"temperatureHighTime":1583359200,"temperatureLow":32.04,"temperatureLowTime":1583409660,"apparentTemperatureHigh":53.34,"apparentTemperatureHighTime":1583359200,"apparentTemperatureLow":26.96,"apparentTemperatureLowTime":1583409120,"dewPoint":24.98,"humidity":0.56,"pressure":1019.7,"windSpeed":3.89,"windGust":6.68,"windGustTime":1583355000,"windBearing":216,"cloudCover":0.12,"uvIndex":5,"uvIndexTime":1583353440,"visibility":10,"ozone":321,"temperatureMin":31.57,"temperatureMinTime":1583331540,"temperatureMax":53.84,"temperatureMaxTime":1583359200,"apparentTemperatureMin":28.1,"apparentTemperatureMinTime":1583331600,"apparentTemperatureMax":53.34,"apparentTemperatureMaxTime":1583359200},{"time":1583395200,"summary":"Overcast
+        throughout the day.","icon":"cloudy","sunriseTime":1583418420,"sunsetTime":1583459940,"moonPhase":0.37,"precipIntensity":0.0001,"precipIntensityMax":0.0003,"precipIntensityMaxTime":1583420400,"precipProbability":0.01,"precipType":"rain","temperatureHigh":51.54,"temperatureHighTime":1583439300,"temperatureLow":35.53,"temperatureLowTime":1583503080,"apparentTemperatureHigh":51.27,"apparentTemperatureHighTime":1583439900,"apparentTemperatureLow":30.99,"apparentTemperatureLowTime":1583505780,"dewPoint":19.25,"humidity":0.45,"pressure":1017.9,"windSpeed":4.97,"windGust":17.55,"windGustTime":1583445180,"windBearing":203,"cloudCover":0.86,"uvIndex":4,"uvIndexTime":1583439060,"visibility":10,"ozone":315.2,"temperatureMin":32.04,"temperatureMinTime":1583409660,"temperatureMax":51.54,"temperatureMaxTime":1583439300,"apparentTemperatureMin":26.96,"apparentTemperatureMinTime":1583409120,"apparentTemperatureMax":51.27,"apparentTemperatureMaxTime":1583439900},{"time":1583481600,"summary":"Foggy
+        starting in the afternoon.","icon":"fog","sunriseTime":1583504700,"sunsetTime":1583546400,"moonPhase":0.4,"precipIntensity":0.0053,"precipIntensityMax":0.0461,"precipIntensityMaxTime":1583568000,"precipProbability":0.15,"precipType":"snow","precipAccumulation":0.92,"temperatureHigh":47.02,"temperatureHighTime":1583525160,"temperatureLow":25.18,"temperatureLowTime":1583593140,"apparentTemperatureHigh":40.5,"apparentTemperatureHighTime":1583525040,"apparentTemperatureLow":18.76,"apparentTemperatureLowTime":1583595360,"dewPoint":17.06,"humidity":0.43,"pressure":1012.5,"windSpeed":9.36,"windGust":34.36,"windGustTime":1583547840,"windBearing":208,"cloudCover":0.78,"uvIndex":5,"uvIndexTime":1583525880,"visibility":6.796,"ozone":323,"temperatureMin":29.76,"temperatureMinTime":1583568000,"temperatureMax":47.02,"temperatureMaxTime":1583525160,"apparentTemperatureMin":23.03,"apparentTemperatureMinTime":1583568000,"apparentTemperatureMax":40.5,"apparentTemperatureMaxTime":1583525040},{"time":1583568000,"summary":"Foggy
+        in the morning.","icon":"fog","sunriseTime":1583591040,"sunsetTime":1583632860,"moonPhase":0.44,"precipIntensity":0.0112,"precipIntensityMax":0.0498,"precipIntensityMaxTime":1583572020,"precipProbability":0.36,"precipType":"snow","precipAccumulation":2.72,"temperatureHigh":35.81,"temperatureHighTime":1583618340,"temperatureLow":23.4,"temperatureLowTime":1583675520,"apparentTemperatureHigh":29.43,"apparentTemperatureHighTime":1583618820,"apparentTemperatureLow":19.29,"apparentTemperatureLowTime":1583675760,"dewPoint":11.71,"humidity":0.49,"pressure":1013.4,"windSpeed":5.92,"windGust":20.8,"windGustTime":1583604120,"windBearing":222,"cloudCover":0.75,"uvIndex":4,"uvIndexTime":1583612040,"visibility":6.73,"ozone":347.7,"temperatureMin":23.6,"temperatureMinTime":1583654400,"temperatureMax":35.81,"temperatureMaxTime":1583618340,"apparentTemperatureMin":18.76,"apparentTemperatureMinTime":1583595360,"apparentTemperatureMax":29.43,"apparentTemperatureMaxTime":1583618820},{"time":1583654400,"summary":"Overcast
+        throughout the day.","icon":"cloudy","sunriseTime":1583677320,"sunsetTime":1583719320,"moonPhase":0.48,"precipIntensity":0.0007,"precipIntensityMax":0.0022,"precipIntensityMaxTime":1583705400,"precipProbability":0.14,"precipType":"snow","precipAccumulation":0.12,"temperatureHigh":38.46,"temperatureHighTime":1583700600,"temperatureLow":27.43,"temperatureLowTime":1583730840,"apparentTemperatureHigh":32.54,"apparentTemperatureHighTime":1583699460,"apparentTemperatureLow":23.4,"apparentTemperatureLowTime":1583739060,"dewPoint":11.52,"humidity":0.46,"pressure":1016.3,"windSpeed":4.5,"windGust":24.84,"windGustTime":1583707320,"windBearing":197,"cloudCover":0.93,"uvIndex":3,"uvIndexTime":1583698020,"visibility":9.852,"ozone":360.9,"temperatureMin":23.4,"temperatureMinTime":1583675520,"temperatureMax":38.46,"temperatureMaxTime":1583700600,"apparentTemperatureMin":19.29,"apparentTemperatureMinTime":1583675760,"apparentTemperatureMax":32.54,"apparentTemperatureMaxTime":1583699460}]},"alerts":[{"title":"Lake
+        Wind Advisory","regions":["Greater Lake Tahoe Area"],"severity":"advisory","time":1583124960,"expires":1583193600,"description":"...LAKE
+        WIND ADVISORY NOW IN EFFECT UNTIL 4 PM PST MONDAY FOR LAKE TAHOE... * CHANGES...Extended
+        through 4 PM Monday afternoon. * WHAT...Northeast winds 20 to 25 mph with
+        gusts up to 40 mph. Waves 2 to 4 feet, highest along the west shore. * WHERE...Greater
+        Lake Tahoe Area. * WHEN...Until 4 PM PST Monday. * IMPACTS...Small boats,
+        kayaks and paddle boards will be prone to capsizing and should remain off
+        lake waters until conditions improve.\n","uri":"https://alerts.weather.gov/cap/wwacapget.php?x=CA125F3FD3E9A0.LakeWindAdvisory.125F3FE279C0CA.REVNPWREV.7e2dc438606fb80cc29db81b92305a34"}],"offset":-8}
+
+'
+    http_version: null
+  recorded_at: Mon, 02 Mar 2020 05:28:43 GMT
+recorded_with: VCR 5.1.0

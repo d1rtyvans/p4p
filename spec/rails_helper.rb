@@ -8,6 +8,8 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'vcr'
+require 'sidekiq/testing'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -85,9 +87,13 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/support/cassettes'
   c.hook_into :webmock
   c.configure_rspec_metadata!
+  c.filter_sensitive_data('<API_KEY>') { ENV.fetch('DARK_SKY_API_KEY') }
 
   # Let's you set default VCR mode with VCR=all for re-recording episodes. :once is VCR default
   #   `VCR=all be rspec spec/to/run`
   record_mode = ENV['VCR'] ? ENV['VCR'].to_sym : :once
   c.default_cassette_options = { :record => record_mode }
 end
+
+# Run async Sidekiq jobs synchronously in tests
+Sidekiq::Testing.inline!

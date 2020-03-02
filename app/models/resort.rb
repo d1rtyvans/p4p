@@ -7,4 +7,8 @@ class Resort < ApplicationRecord
   has_many :forecasts
   has_many :favorites
   has_many :users, through: :favorites
+
+  def coords
+    [lat, lon]
+  end
 end

@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Resort, :model do
+  let(:resort) { build(:resort) }
+
+  describe '#coords'do
+    subject { resort.coords }
+    it { is_expected.to eq([resort.lat, resort.lon]) }
+  end
+
   context 'Associations' do
     it { is_expected.to have_many(:forecasts) }
     it { is_expected.to have_many(:users).through(:favorites) }
