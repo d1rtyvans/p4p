@@ -30,6 +30,12 @@ SEED_RESORTS = [
     name: 'Whistler Blackomb',
     lat:  50.108333,
     lon:  -122.9425,
+  },
+  {
+    uid: 'mammoth',
+    name: 'Mammoth Mountain',
+    lat: 37.6308,
+    lon: -119.0326,
   }
 ]
 
