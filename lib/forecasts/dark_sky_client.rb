@@ -17,7 +17,9 @@ module Forecasts
     def forecast(coords)
       url          = "#{BASE_URL}/forecast/#{@api_key}/#{coords * ','}"
       query_params = "?exclude=#{EXCLUDE * ','}"
-      get(url + query_params)
+
+      # TODO: Error handling for nil values... Error handling in Client
+      get(url + query_params)['daily']['data']
     end
 
     private

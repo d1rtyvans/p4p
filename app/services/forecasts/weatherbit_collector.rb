@@ -1,11 +1,11 @@
 module Forecasts
-  class DarkSkyCollector
+  class WeatherbitCollector
     attr_reader :client
 
     def initialize(options)
       @resort_id = options.fetch(:resort_id)
       @coords    = options.fetch(:coords)
-      @client    = DarkSkyClient.new
+      @client    = WeatherbitClient.new
     end
 
     def do!
@@ -20,9 +20,9 @@ module Forecasts
     def create_forecasts!(forecasts)
       # TODO: Error handling
       # TODO: Make idempotent
-      DarkSkyForecast.transaction do
+      WeatherbitForecast.transaction do
         forecasts.each do |forecast_data|
-          DarkSkyForecast.create!(forecast_data)
+          WeatherbitForecast.create!(forecast_data)
         end
       end
     end
@@ -35,19 +35,19 @@ module Forecasts
       timestamp = Time.current
       forecasts.map do |forecast_data|
         {
-          date:                unix_time_to_date(forecast_data['time']),
+          date:                unix_time_to_date(forecast_data['ts']),
           resort_id:           @resort_id,
           last_update:         timestamp,
           last_update_attempt: timestamp,
           status:              'synced',
           payload: {
-            hi_temp:         forecast_data['temperatureHigh'],
-            lo_temp:         forecast_data['temperatureLow'],
-            accumulation_cm: forecast_data['precipAccumulation'], # cm
-            precip_prob:     pct_to_int(forecast_data['precipProbability']),
-            precip_type:     forecast_data['precipType'], # "rain", "snow", "sleet", nil
-            visibility:      forecast_data['visibility'],
-            wind_speed:      forecast_data['windSpeed'],  # MPH
+            hi_temp:     forecast_data['max_temp'],
+            lo_temp:     forecast_data['min_temp'],
+            precip_prob: forecast_data['pop'],
+            snow_depth:  forecast_data['snow_depth'],
+            snowfall:    forecast_data['snow'],
+            wind_speed:  forecast_data['wind_spd'],
+            visibility:  km_to_mile(forecast_data['vis']), # TODO: May already by miles
           }
         }
       end
@@ -58,10 +58,15 @@ module Forecasts
       yield
     end
 
-    # TODO: Extract these two out and test
-    def pct_to_int(pct)
-      (pct * 100).to_i
-    end
+    def km_to_mile(kms)
+      # Caps out at 10 mi
+      return 10 if kms == 15
+
+      # This is close enough for what we're using it for. Don't need to store the
+      # extra decimals, if a time comes when we need that exact data this can
+      # always be updated
+      kms * 0.62
+  end
 
     def unix_time_to_date(unix_time)
       Time.at(unix_time).to_date

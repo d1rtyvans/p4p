@@ -20,9 +20,9 @@ RSpec.describe Forecasts::DarkSkyCollectionWorker, :vcr do
         # for presence on the jsonb column. Need to look into whether or not
         # that's possible/worth doing.
         payload = forecast.payload
-        expect(payload['hi_temp']).to    be_a(Float)
-        expect(payload['wind_speed']).to be_a(Float)
-        expect(payload['visibility']).to be <= 10
+        expect(payload['hi_temp']).to    be_a(Numeric)
+        expect(payload['wind_speed']).to be_a(Numeric)
+        expect(payload['visibility']).to be_a(Numeric)
       end
     end
   end
