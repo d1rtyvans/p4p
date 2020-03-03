@@ -30,8 +30,8 @@ group :development do
   # Easily use a single script to start up development servers
   gem 'foreman'
 
-  gem 'listen', '>= 3.0.5', '< 3.2'
   # The minute spring acts up it's getting removed
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

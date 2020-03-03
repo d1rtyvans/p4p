@@ -87,8 +87,8 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/support/cassettes'
   c.hook_into :webmock
   c.configure_rspec_metadata!
-  c.filter_sensitive_data('<API_KEY>') { ENV.fetch('DARK_SKY_API_KEY') }
-  c.filter_sensitive_data('<API_KEY>') { ENV.fetch('WEATHERBIT_API_KEY') }
+  c.filter_sensitive_data('<DS_API_KEY>') { ENV.fetch('DARK_SKY_API_KEY') }
+  c.filter_sensitive_data('<WB_API_KEY>') { ENV.fetch('WEATHERBIT_API_KEY') }
 
   # Let's you set default VCR mode with VCR=all for re-recording episodes. :once is VCR default
   #   `VCR=all be rspec spec/to/run`

@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Mar 2020 00:53:11 GMT
+      - Tue, 03 Mar 2020 00:53:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -27,15 +27,15 @@ http_interactions:
       Connection:
       - keep-alive
       X-Authentication-Time:
-      - 325ms
+      - 539ms
       X-Forecast-Api-Calls:
-      - '7'
+      - '9'
       Cache-Control:
       - max-age=3600
       Expires:
-      - Tue, 03 Mar 2020 01:53:11 +0000
+      - Tue, 03 Mar 2020 01:53:12 +0000
       X-Response-Time:
-      - 50.906ms
+      - 73.246ms
       Vary:
       - Accept-Encoding
     body:
@@ -53,5 +53,63 @@ http_interactions:
 
 '
     http_version: null
-  recorded_at: Tue, 03 Mar 2020 00:53:11 GMT
+  recorded_at: Tue, 03 Mar 2020 00:53:12 GMT
+- request:
+    method: get
+    uri: https://api.weatherbit.io/v2.0/forecast/daily?days=8&key=<WB_API_KEY>&lat=38.8009&lon=-120.0809&units=I
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.11.2.2
+      Date:
+      - Tue, 03 Mar 2020 00:53:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Ratelimit-Limit:
+      - '1000'
+      X-Ratelimit-Remaining:
+      - '953'
+      X-Ratelimit-Reset:
+      - '1583258644'
+      X-Proxy-Cache:
+      - HIT
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"moonrise_ts":1583174872,"wind_cdir":"ENE","rh":60,"pres":770.547,"high_temp":31,"sunset_ts":1583200505,"ozone":328.152,"moon_phase":0.66591,"wind_gust_spd":56.4,"snow_depth":8.106,"clouds":5,"ts":1583136060,"sunrise_ts":1583159343,"app_min_temp":0.9,"wind_spd":18.5,"pop":0,"wind_cdir_full":"east-northeast","slp":1021.27,"valid_date":"2020-03-02","app_max_temp":21.9,"vis":15,"dewpt":11.7,"snow":0,"uv":5.73069,"weather":{"icon":"c02d","code":801,"description":"Few
+        clouds"},"wind_dir":64,"max_dhi":null,"clouds_hi":0,"precip":0,"low_temp":23.6,"max_temp":31.1,"moonset_ts":1583146102,"datetime":"2020-03-02","temp":24.4,"min_temp":12.9,"clouds_mid":0,"clouds_low":5},{"moonrise_ts":1583263827,"wind_cdir":"E","rh":66,"pres":774.142,"high_temp":43.6,"sunset_ts":1583286970,"ozone":315.422,"moon_phase":0.767584,"wind_gust_spd":21,"snow_depth":8.106,"clouds":2,"ts":1583222460,"sunrise_ts":1583245652,"app_min_temp":14.3,"wind_spd":6.8,"pop":0,"wind_cdir_full":"east","slp":1020.86,"valid_date":"2020-03-03","app_max_temp":37.7,"vis":15,"dewpt":23.3,"snow":0,"uv":5.72169,"weather":{"icon":"c02d","code":801,"description":"Few
+        clouds"},"wind_dir":83,"max_dhi":null,"clouds_hi":0,"precip":0,"low_temp":25.9,"max_temp":43.9,"moonset_ts":1583235944,"datetime":"2020-03-03","temp":33.7,"min_temp":24.3,"clouds_mid":1,"clouds_low":0},{"moonrise_ts":1583353279,"wind_cdir":"SSW","rh":60,"pres":767.013,"high_temp":48.7,"sunset_ts":1583373435,"ozone":321.33,"moon_phase":0.858297,"wind_gust_spd":7,"snow_depth":8.106,"clouds":13,"ts":1583308860,"sunrise_ts":1583331959,"app_min_temp":19.1,"wind_spd":2.8,"pop":0,"wind_cdir_full":"south-southwest","slp":1019.42,"valid_date":"2020-03-04","app_max_temp":48.7,"vis":15,"dewpt":24.1,"snow":0,"uv":5.10519,"weather":{"icon":"c02d","code":801,"description":"Few
+        clouds"},"wind_dir":194,"max_dhi":null,"clouds_hi":13,"precip":0,"low_temp":31,"max_temp":49.5,"moonset_ts":1583325489,"datetime":"2020-03-04","temp":37,"min_temp":28.3,"clouds_mid":0,"clouds_low":0},{"moonrise_ts":1583443265,"wind_cdir":"SSW","rh":64,"pres":766.02,"high_temp":45.7,"sunset_ts":1583459900,"ozone":310.702,"moon_phase":0.931006,"wind_gust_spd":18.4,"snow_depth":8.106,"clouds":92,"ts":1583395260,"sunrise_ts":1583418267,"app_min_temp":21.2,"wind_spd":5.3,"pop":0,"wind_cdir_full":"south-southwest","slp":1018.25,"valid_date":"2020-03-05","app_max_temp":45.7,"vis":15,"dewpt":24.8,"snow":0,"uv":1.85423,"weather":{"icon":"c04d","code":804,"description":"Overcast
+        clouds"},"wind_dir":202,"max_dhi":null,"clouds_hi":92,"precip":0,"low_temp":29.1,"max_temp":45.8,"moonset_ts":1583414680,"datetime":"2020-03-05","temp":36,"min_temp":30.4,"clouds_mid":1,"clouds_low":0},{"moonrise_ts":1583533730,"wind_cdir":"SSW","rh":61,"pres":760.205,"high_temp":41.4,"sunset_ts":1583546364,"ozone":313.136,"moon_phase":0.979209,"wind_gust_spd":43,"snow_depth":8.283,"clouds":71,"ts":1583481660,"sunrise_ts":1583504573,"app_min_temp":16.9,"wind_spd":11.4,"pop":55,"wind_cdir_full":"south-southwest","slp":1012.95,"valid_date":"2020-03-06","app_max_temp":35,"vis":13.9,"dewpt":21.3,"snow":0.177,"uv":4.39803,"weather":{"icon":"s01d","code":600,"description":"Light
+        snow"},"wind_dir":201,"max_dhi":null,"clouds_hi":69,"precip":0.015,"low_temp":16.6,"max_temp":41.5,"moonset_ts":1583507134,"datetime":"2020-03-06","temp":34,"min_temp":25.8,"clouds_mid":6,"clouds_low":2},{"moonrise_ts":1583624533,"wind_cdir":"SW","rh":92,"pres":754.366,"high_temp":31.4,"sunset_ts":1583636428,"ozone":338.119,"moon_phase":0.998096,"wind_gust_spd":33.8,"snow_depth":18.087,"clouds":100,"ts":1583568060,"sunrise_ts":1583594479,"app_min_temp":1.1,"wind_spd":10.6,"pop":100,"wind_cdir_full":"southwest","slp":1012.12,"valid_date":"2020-03-07","app_max_temp":15.4,"vis":0.7,"dewpt":18.9,"snow":9.803,"uv":1.79984,"weather":{"icon":"s03d","code":602,"description":"Heavy
+        snow"},"wind_dir":232,"max_dhi":null,"clouds_hi":9,"precip":0.817,"low_temp":13.9,"max_temp":28.1,"moonset_ts":1583595721,"datetime":"2020-03-07","temp":21.5,"min_temp":13.6,"clouds_mid":54,"clouds_low":100},{"moonrise_ts":1583715508,"wind_cdir":"S","rh":84,"pres":758.925,"high_temp":35,"sunset_ts":1583719292,"ozone":365.37,"moon_phase":0.985517,"wind_gust_spd":9,"snow_depth":18.087,"clouds":97,"ts":1583654460,"sunrise_ts":1583677185,"app_min_temp":0.5,"wind_spd":3.2,"pop":10,"wind_cdir_full":"south","slp":1017.4,"valid_date":"2020-03-08","app_max_temp":22.4,"vis":13.7,"dewpt":18.2,"snow":0,"uv":1.80549,"weather":{"icon":"c04d","code":804,"description":"Overcast
+        clouds"},"wind_dir":178,"max_dhi":null,"clouds_hi":87,"precip":0.005,"low_temp":19.5,"max_temp":31.8,"moonset_ts":1583680534,"datetime":"2020-03-08","temp":23,"min_temp":13.6,"clouds_mid":77,"clouds_low":24},{"moonrise_ts":1583806522,"wind_cdir":"S","rh":82,"pres":763.253,"high_temp":38.1,"sunset_ts":1583805756,"ozone":392.754,"moon_phase":0.942456,"wind_gust_spd":13,"snow_depth":18.087,"clouds":26,"ts":1583737260,"sunrise_ts":1583763490,"app_min_temp":7.5,"wind_spd":3.5,"pop":20,"wind_cdir_full":"south","slp":1019.45,"valid_date":"2020-03-09","app_max_temp":26.9,"vis":14.6,"dewpt":21.4,"snow":0,"uv":5.84154,"weather":{"icon":"c02d","code":802,"description":"Scattered
+        clouds"},"wind_dir":182,"max_dhi":null,"clouds_hi":6,"precip":0.002,"low_temp":24.6,"max_temp":35.2,"moonset_ts":1583768870,"datetime":"2020-03-09","temp":26.6,"min_temp":18.3,"clouds_mid":14,"clouds_low":14}],"city_name":"South
+        Lake Tahoe","lon":-120.08,"timezone":"America\/Los_Angeles","lat":38.8,"country_code":"US","state_code":"CA"}
+
+'
+    http_version: null
+  recorded_at: Tue, 03 Mar 2020 00:53:12 GMT
 recorded_with: VCR 5.1.0

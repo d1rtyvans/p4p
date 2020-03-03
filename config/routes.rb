@@ -3,6 +3,7 @@ require 'sidekiq/web'
 Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]
 
 Rails.application.routes.draw do
+  # Web UI for viewing and managing Sidekiq workers
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
     # TODO: Read these and delete
     # Protect against timing attacks:

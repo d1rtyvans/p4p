@@ -20,6 +20,12 @@ RSpec.describe Forecasts::BulkCollectionWorker, :vcr do
     context 'When forecasts already exist at dates' do
       let(:forecast) { create(:forecast, resort: resort, status: 'error') }
 
+      before do
+        # If this VCR cassette gets updated, update this date to Date.today.to_s
+        stubbed_date = '2020-03-02'
+        forecast.update!(last_update: stubbed_date.to_date)
+      end
+
       it 'Updates forecast data' do
         last_update = forecast.last_update
 
