@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 2020_03_02_002757) do
     t.integer "status", default: 0, null: false
     t.datetime "last_update"
     t.datetime "last_update_attempt"
+    t.jsonb "error_data"
     t.bigint "resort_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["date", "resort_id", "type"], name: "index_forecasts_on_date_and_resort_id_and_type", unique: true
+    t.index ["resort_id", "date", "type"], name: "index_forecasts_on_resort_id_and_date_and_type", unique: true
     t.index ["resort_id"], name: "index_forecasts_on_resort_id"
   end
 

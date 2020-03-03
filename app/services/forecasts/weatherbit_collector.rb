@@ -21,7 +21,7 @@ module Forecasts
       # TODO: Error handling
       # TODO: Make idempotent
       WeatherbitForecast.upsert_all(forecasts,
-                                    unique_by: [:date, :resort_id, :type])
+                                    unique_by: [:resort_id, :date, :type])
     end
 
     def get_forecasts

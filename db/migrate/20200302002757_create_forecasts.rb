@@ -9,11 +9,12 @@ class CreateForecasts < ActiveRecord::Migration[6.0]
       t.integer    :status,  null: false, default: 0
       t.timestamp  :last_update
       t.timestamp  :last_update_attempt
+      t.jsonb      :error_data
 
-      t.references :resort, index: true
+      t.references :resort
       t.timestamps
     end
 
-    add_index :forecasts, [:date, :resort_id, :type], unique: true
+    add_index :forecasts, [:resort_id, :date, :type], unique: true
   end
 end
