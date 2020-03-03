@@ -37,7 +37,6 @@ module Forecasts
           last_update_attempt: timestamp,
           status:              1, # TODO: Convert
           type:                'DarkSkyForecast',
-          created_at:          timestamp,
           updated_at:          timestamp,
           payload: {
             hi_temp:         forecast_data['temperatureHigh'],

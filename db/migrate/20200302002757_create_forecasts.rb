@@ -16,5 +16,8 @@ class CreateForecasts < ActiveRecord::Migration[6.0]
     end
 
     add_index :forecasts, [:resort_id, :date, :type], unique: true
+
+    # This will allow created at to automatically be set in `upsert_all`
+    change_column_default :forecasts, :created_at, -> { 'now()' }
   end
 end

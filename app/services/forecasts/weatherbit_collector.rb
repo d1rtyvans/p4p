@@ -38,7 +38,6 @@ module Forecasts
           last_update_attempt: timestamp,
           status:              1,
           type:                'WeatherbitForecast',
-          created_at:          timestamp,
           updated_at:          timestamp,
           payload: {
             hi_temp:     forecast_data['max_temp'],
