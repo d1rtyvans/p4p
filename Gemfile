@@ -26,6 +26,9 @@ gem 'httparty'
 gem 'pry-rails'
 gem 'rb-readline'
 
+# Validations for jsonb columns
+gem 'store_model'
+
 group :development do
   # Easily use a single script to start up development servers
   gem 'foreman'

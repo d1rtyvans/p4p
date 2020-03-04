@@ -18,9 +18,21 @@ module Forecasts
     private
 
     def upsert_forecasts!(forecasts)
-      # TODO: Error handling
-      DarkSkyForecast.upsert_all(forecasts,
-                                 unique_by: [:resort_id, :date, :type])
+      # Create or update weather_data for forecasts matching date, type, and
+      # resort. Until performance becomes an issue, this will be done 1 by 1
+      # instead of #upsert_all because it allows us to take advantage of
+      # ActiveRecord callbacks and validations.
+      DarkSkyForecast.transaction do
+        forecasts.each do |forecast_data|
+          identifiers = {
+            resort_id: @resort_id,
+            date:      forecast_data[:date],
+          }
+
+          forecast = DarkSkyForecast.find_or_initialize_by(identifiers)
+          forecast.update!(weather_data: forecast_data[:weather_data])
+        end
+      end
     end
 
     def get_forecasts
@@ -28,14 +40,9 @@ module Forecasts
     end
 
     def format_data(forecasts)
-      timestamp = Time.current
       forecasts.map do |forecast_data|
         {
-          type:                'DarkSkyForecast',
           date:                unix_time_to_date(forecast_data['time']),
-          resort_id:           @resort_id,
-          created_at:          timestamp,
-          updated_at:          timestamp,
           weather_data: {
             hi_temp:         forecast_data['temperatureHigh'],
             lo_temp:         forecast_data['temperatureLow'],
