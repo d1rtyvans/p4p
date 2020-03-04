@@ -42,7 +42,7 @@ module Forecasts
     def format_data(forecasts)
       forecasts.map do |forecast_data|
         {
-          date:                unix_time_to_date(forecast_data['time']),
+          date: unix_time_to_date(forecast_data['time']),
           weather_data: {
             hi_temp:         forecast_data['temperatureHigh'],
             lo_temp:         forecast_data['temperatureLow'],
