@@ -13,7 +13,7 @@ class Forecast < ApplicationRecord
 
   def self.aggregate_query(resort_uid)
     # This statement is built in raw SQL to boost performance by making less
-    # calls to the DB, and not building Ruby objects for every forecast.
+    # calls to the DB and not building Ruby objects for every forecast.
     # We leverage ActiveRecord validations when writing this data, so we know
     # we can trust it and pull it directly from the DB.
     select_statement = <<-EOS
@@ -28,8 +28,8 @@ class Forecast < ApplicationRecord
       AVG((weather_data ->> 'snowfall')::numeric)::int    as avg_snowfall
     EOS
 
-    # Build the query with ActiveRecord first to avoid any string interpolation
-    # or potential SQL injection (though unlikely)
+    # Build the query with ActiveRecord first to avoid any potential
+    # SQL injection (though unlikely)
     joins(:resort)
       .where('resorts.uid': resort_uid)
       .where('date > ?', Date.yesterday)
