@@ -5,7 +5,7 @@ Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :resorts do
+      resources :resorts, only: %i[create] do
         resources :forecasts, only: %i[index]
       end
     end
