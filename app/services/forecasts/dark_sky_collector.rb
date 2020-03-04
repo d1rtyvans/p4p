@@ -57,8 +57,19 @@ module Forecasts
     end
 
     def with_error_handling
-      # TODO: Error handling
       yield
+    rescue StandardError => e
+      # TODO: More robust error handling for specific cases. Will eventually
+      # break these down by parent class, ActiveRecord, DarkSkyClient..
+      # Retrying some errors and not others, etc.
+      err_message = "#{e.class} - #{e.message}"
+      Rails.logger.error('Error while collecting forecast data from Dark Sky API: ' + err_message.inspect)
+      outage!(e)
+    end
+
+    def outage!(e)
+      # TODO: Track outages for specific Forecast sources to display warning
+      # to user.. Possibly use Redis for this...
     end
 
     # TODO: Extract these two out and test

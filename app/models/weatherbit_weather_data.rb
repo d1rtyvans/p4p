@@ -5,7 +5,6 @@
 class WeatherbitWeatherData
   include StoreModel::Model
 
-  # See if possible to round float to 2 decimal points...
   attribute :hi_temp,     :float
   attribute :lo_temp,     :float
   attribute :precip_prob, :float

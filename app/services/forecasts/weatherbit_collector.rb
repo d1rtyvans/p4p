@@ -57,8 +57,19 @@ module Forecasts
     end
 
     def with_error_handling
-      # TODO: Error handling
       yield
+    rescue StandardError => e
+      # TODO: More robust error handling for specific cases. Will eventually
+      # break these down by parent class, ActiveRecord, WeatherbitClient..
+      # Retrying some errors and not others, etc.
+      err_message = "#{e.class} - #{e.message}"
+      Rails.logger.error('Error while collecting forecast data from Weatherbit: ' + err_message.inspect)
+      outage!(e)
+    end
+
+    def outage!(e)
+      # TODO: Track outages for specific Forecast sources to display warning
+      # to user.. Possibly use Redis for this...
     end
 
     def km_to_mile(kms)
@@ -68,7 +79,7 @@ module Forecasts
       # This is close enough for what we're using it for. Don't need to store the
       # extra decimals, if a time comes when we need that exact data this can
       # always be updated
-      kms * 0.62
+      (kms * 0.62).round(2)
   end
 
     def unix_time_to_date(unix_time)
