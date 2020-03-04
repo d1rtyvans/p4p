@@ -31,14 +31,12 @@ module Forecasts
       timestamp = Time.current
       forecasts.map do |forecast_data|
         {
+          type:                'DarkSkyForecast',
           date:                unix_time_to_date(forecast_data['time']),
           resort_id:           @resort_id,
-          last_update:         timestamp,
-          last_update_attempt: timestamp,
-          status:              1, # TODO: Convert
-          type:                'DarkSkyForecast',
+          created_at:          timestamp,
           updated_at:          timestamp,
-          payload: {
+          weather_data: {
             hi_temp:         forecast_data['temperatureHigh'],
             lo_temp:         forecast_data['temperatureLow'],
             accumulation_cm: forecast_data['precipAccumulation'], # cm

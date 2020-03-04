@@ -32,21 +32,19 @@ module Forecasts
       timestamp = Time.current
       forecasts.map do |forecast_data|
         {
+          type:                'WeatherbitForecast',
           date:                unix_time_to_date(forecast_data['ts']),
           resort_id:           @resort_id,
-          last_update:         timestamp,
-          last_update_attempt: timestamp,
-          status:              1,
-          type:                'WeatherbitForecast',
+          created_at:          timestamp,
           updated_at:          timestamp,
-          payload: {
+          weather_data: {
             hi_temp:     forecast_data['max_temp'],
             lo_temp:     forecast_data['min_temp'],
             precip_prob: forecast_data['pop'],
             snow_depth:  forecast_data['snow_depth'],
             snowfall:    forecast_data['snow'],
             wind_speed:  forecast_data['wind_spd'],
-            visibility:  km_to_mile(forecast_data['vis']), # TODO: May already by miles
+            visibility:  km_to_mile(forecast_data['vis']), # TODO: May already be miles?
           }
         }
       end

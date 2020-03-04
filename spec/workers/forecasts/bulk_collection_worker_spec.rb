@@ -11,29 +11,24 @@ RSpec.describe Forecasts::BulkCollectionWorker, :vcr do
 
       forecasts = resort.reload.forecasts
       expect(forecasts.size).to eq(described_class::FORECAST_SOURCES.size * 8)
-
-      forecasts.each do |forecast|
-        expect(forecast).to be_synced
-      end
     end
 
     context 'When forecasts already exist at dates' do
-      let(:forecast) { create(:forecast, resort: resort, status: 'error') }
+      let(:forecast) { create(:forecast, resort: resort) }
 
       before do
         # If this VCR cassette gets updated, update this date to Date.today.to_s
         stubbed_date = '2020-03-02'
-        forecast.update!(last_update: stubbed_date.to_date)
+        forecast.update!(updated_at: stubbed_date.to_date)
       end
 
       it 'Updates forecast data' do
-        last_update = forecast.last_update
+        last_update = forecast.updated_at
 
         subject
 
         updated_forecast = forecast.reload
-        expect(updated_forecast).to             be_synced
-        expect(updated_forecast.last_update).to be > last_update
+        expect(updated_forecast.updated_at).to be > last_update
       end
     end
   end

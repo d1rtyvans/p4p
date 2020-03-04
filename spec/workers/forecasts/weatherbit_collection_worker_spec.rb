@@ -12,17 +12,14 @@ RSpec.describe Forecasts::WeatherbitCollectionWorker, :vcr do
       forecasts = resort.reload.forecasts
 
       expect(forecasts).to_not be_empty
-      forecasts.each do |forecast|
-        expect(forecast).to be_synced
-
-        payload = forecast.payload
-        expect(payload['hi_temp']).to     be_a(Numeric)
-        expect(payload['lo_temp']).to     be_a(Numeric)
-        expect(payload['precip_prob']).to be_a(Numeric)
-        expect(payload['snow_depth']).to  be_a(Numeric)
-        expect(payload['snowfall']).to    be_a(Numeric)
-        expect(payload['wind_speed']).to  be_a(Numeric)
-        expect(payload['visibility']).to  be_a(Numeric)
+      forecasts.pluck(:weather_data) do |weather_data|
+        expect(weather_data['hi_temp']).to     be_a(Numeric)
+        expect(weather_data['lo_temp']).to     be_a(Numeric)
+        expect(weather_data['precip_prob']).to be_a(Numeric)
+        expect(weather_data['snow_depth']).to  be_a(Numeric)
+        expect(weather_data['snowfall']).to    be_a(Numeric)
+        expect(weather_data['wind_speed']).to  be_a(Numeric)
+        expect(weather_data['visibility']).to  be_a(Numeric)
       end
     end
   end

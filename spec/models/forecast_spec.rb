@@ -5,26 +5,12 @@ RSpec.describe Forecast, :model do
     it { is_expected.to belong_to(:resort) }
   end
 
-  context 'Enumerable values' do
-    it do
-      statuses = %i[
-        pending
-        synced
-        error
-      ]
-
-      is_expected.to define_enum_for(:status).with_values(statuses)
-    end
-  end
-
-
   context 'Validations' do
     describe 'presence' do
       attrs = %i[
         type
         date
-        payload
-        status
+        weather_data
       ]
 
       attrs.each do |attr|
