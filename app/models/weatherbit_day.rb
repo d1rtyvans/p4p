@@ -1,0 +1,2 @@
+class WeatherbitDay < Day
+end

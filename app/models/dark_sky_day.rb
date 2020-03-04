@@ -1,0 +1,2 @@
+class DarkSkyDay < Day
+end

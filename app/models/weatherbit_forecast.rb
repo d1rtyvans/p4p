@@ -1,2 +1,0 @@
-class WeatherbitForecast < Forecast
-end

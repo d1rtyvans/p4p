@@ -9,8 +9,9 @@ RSpec.describe Resort, :model do
   end
 
   context 'Associations' do
-    it { is_expected.to have_many(:forecasts) }
+    it { is_expected.to have_many(:days) }
     it { is_expected.to have_many(:users).through(:favorites) }
+    it { is_expected.to have_many(:forecast_sources).through(:resorts_forecast_sources) }
   end
 
   context 'Validations' do
@@ -21,8 +22,8 @@ RSpec.describe Resort, :model do
 
     describe 'presence' do
       attrs = %i[
-        name
         uid
+        name
         lat
         lon
       ]

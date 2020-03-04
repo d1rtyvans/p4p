@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_002757) do
+ActiveRecord::Schema.define(version: 2020_03_04_023418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.string "type", null: false
+    t.date "date", null: false
+    t.jsonb "weather_data", default: "{}", null: false
+    t.bigint "resort_id"
+    t.bigint "forecast_source_id"
+    t.datetime "last_update"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["forecast_source_id"], name: "index_days_on_forecast_source_id"
+    t.index ["resort_id", "date", "forecast_source_id"], name: "index_days_on_resort_id_and_date_and_forecast_source_id"
+    t.index ["resort_id"], name: "index_days_on_resort_id"
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
@@ -24,19 +38,19 @@ ActiveRecord::Schema.define(version: 2020_03_02_002757) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "forecasts", force: :cascade do |t|
-    t.string "type", null: false
-    t.date "date", null: false
-    t.jsonb "payload", default: "{}", null: false
+  create_table "forecast_sources", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "klass_name", null: false
     t.integer "status", default: 0, null: false
-    t.datetime "last_update"
-    t.datetime "last_update_attempt"
-    t.jsonb "error_data"
-    t.bigint "resort_id"
-    t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
+  end
+
+  create_table "outages", force: :cascade do |t|
+    t.bigint "forecast_source_id"
+    t.jsonb "error_data", null: false
+    t.datetime "resolved_at"
+    t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["resort_id", "date", "type"], name: "index_forecasts_on_resort_id_and_date_and_type", unique: true
-    t.index ["resort_id"], name: "index_forecasts_on_resort_id"
+    t.index ["forecast_source_id"], name: "index_outages_on_forecast_source_id"
   end
 
   create_table "resorts", force: :cascade do |t|
@@ -47,6 +61,15 @@ ActiveRecord::Schema.define(version: 2020_03_02_002757) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["uid"], name: "index_resorts_on_uid", unique: true
+  end
+
+  create_table "resorts_forecast_sources", force: :cascade do |t|
+    t.bigint "resort_id"
+    t.bigint "forecast_source_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["forecast_source_id"], name: "index_resorts_forecast_sources_on_forecast_source_id"
+    t.index ["resort_id"], name: "index_resorts_forecast_sources_on_resort_id"
   end
 
   create_table "users", force: :cascade do |t|
