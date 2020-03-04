@@ -9,6 +9,6 @@ class Resort < ApplicationRecord
   has_many :users, through: :favorites
 
   def coords
-    [lat, lon]
+    [lat.to_f, lon.to_f]
   end
 end
