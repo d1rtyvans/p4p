@@ -29,6 +29,9 @@ gem 'rb-readline'
 # Validations for jsonb columns
 gem 'store_model'
 
+# Easy json serialization for API endpoints
+gem 'active_model_serializers'
+
 group :development do
   # Easily use a single script to start up development servers
   gem 'foreman'
